@@ -1,34 +1,102 @@
 /**
- * stack
+ * JavaDSA
  */
-// Built in stack class to perform stack operations
-import java.util.Stack;
-
 public class JavaDSA {
+    int size = 5;
+    int items[] = new int [size];
+    int front, rear;
+
+    JavaDSA(){
+        front = -1;
+        rear = -1;
+    }
+
+    // check queue is full 
+    boolean isFull(){
+        if(front ==0 && rear==size-1){
+            return true;
+        }
+        return false;
+    }
+
+    // check queue is empty
+    boolean isEmpty(){
+        if(front==-1){
+            return true;
+        }
+        return false;
+    }
+
+    // Insert element in queue
+    void enqueue(int item){
+        if(isFull()){
+            System.out.println("Queue is full - Overflow condition, Can't Insert " + item);
+        }
+        else{
+            if(front==-1){
+                front=0;
+            }
+            rear++;
+            items[rear]=item;
+            System.out.println("Inserted : "+item);
+        }
+    }
+
+    // delete element from queue
+    void dequeue(){
+        int val ;
+        if(isEmpty()){
+            System.out.println("Queue is empty - Underflow conditin");
+        }
+        else{
+            val= items[front];
+            if(front>=rear){
+                front=-1;
+                rear=-1;
+            }
+            else{
+                front++;
+            }
+            System.out.println("Deleted element is  "+ val);
+        }
+    }
+
+    // Print queue
+    void display(){
+        int i;
+        if(isEmpty()){
+            System.out.println("Queue is empty");
+        }
+        else{
+            for(i=front; i<=rear; i++){
+                System.out.print(items[i]+ " ");
+            }
+        }
+    }
+
     public static void main(String args []){
-        Stack <Integer> st = new Stack<>();
+        JavaDSA q = new JavaDSA();
+        q.dequeue();
 
-        // Insert element in stack
-        st.push(10);
-        st.push(20);
-        st.push(30);
-        st.push(40);
-        st.push(50);
-        System.out.println("Stack Elements are " + st);
+        q.enqueue(10);
+        q.enqueue(20);
+        q.enqueue(30);
 
-        // Top element
-        int topElement = st.peek();
-        System.out.println(topElement);
-        System.out.println("Stack Element after peek() "+ st);
+        q.dequeue();
 
-        // Remove top element
-        int popElement = st.pop();
-        System.out.println("Removed element is "+ popElement);
-        System.out.println("Stack after pop() "+st);
+        q.enqueue(40);
+        q.enqueue(50);
 
-        // isEmpty
-        System.out.println("Stack is empty " + st.isEmpty());
+        q.display();
 
+        q.dequeue();
+        q.display();
+
+        q.dequeue();
+        q.display();
+
+        q.dequeue();
+        q.display();
 
     }
 }
