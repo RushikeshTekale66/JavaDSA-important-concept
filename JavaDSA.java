@@ -1,28 +1,60 @@
-import java.util.LinkedList;
-import java.util.ListIterator;
 
-class JavaDSA {
-    public static void main(String[] args) {
-        LinkedList <Integer> obj = new LinkedList<>();
+// Doubly Linked list
+class Node {
+    int data ;
+    Node prev;
+    Node next;
 
-        obj.add(10);
-        obj.add(20);
-        obj.add(30);
-        obj.add(40);
-        obj.add(50);
+    public Node(int data){
+        this.data = data;
+        this.prev = null;
+        this.next = null;
+    }
+}
 
-        ListIterator <Integer> iterator = obj.listIterator();
+public class JavaDSA {
 
-        while(iterator.hasNext()){
-            System.out.print(iterator.next()+" ");
+     Node head;
+     public JavaDSA(){
+        head = null;
+     }
+
+    //  Insert at begning
+     public void insert(int data){
+        Node newNode = new Node(data);
+
+        if(head ==null){
+            head = newNode;
         }
-        System.out.println();
-
-        obj.addFirst(obj.removeLast());
-        iterator = obj.listIterator();
-
-        for(int i=0; i<obj.size(); i++){
-            System.out.print(iterator.next() + " ");
+        else{
+            newNode.next=head;
+            head.prev=newNode;
+            head=newNode;
         }
+     }
+
+    //  Display list
+    public void display(){
+        if(head==null){
+            System.out.println("List is empty");
+        }
+        else{
+            Node current = head;
+            while (current!=null) {
+                System.out.println(current.data + " ");
+                current=current.next;
+            }
+        }
+    }
+
+    public static void main(String [] args){
+        JavaDSA obj = new JavaDSA();
+
+        obj.insert(10);
+        obj.insert(20);
+        obj.insert(30);
+        obj.insert(40);
+
+        obj.display();
     }
 }
