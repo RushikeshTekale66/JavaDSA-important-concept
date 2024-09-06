@@ -1,31 +1,22 @@
-import java.util.Map;
-import java.util.HashMap;
+class JavaDSA {
 
-/**
- * JavaDSA
- */
-public class JavaDSA {
+    public int linerSearch(int target, int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i;
+            }
+        }
 
-    public static void main(String [] args){
-        Map<String, Integer> ht = new HashMap<>();
+        return -1;
+    }
 
-        // Add key value to hashmap
-        ht.put("apple", 5);
-        ht.put("banana", 8);
-        ht.put("orange", 3);
+    public static void main(String[] args) {
+        int[] arr = { 1, 2, 3, 4, 9, 8, 7, 6, 5 };
+        int target = 22;
 
-        // get the value of that key
-        int appleCount = ht.get("apple");
-        System.out.println("Count of apple is : "+ appleCount);
+        JavaDSA js = new JavaDSA();
+        int result = js.linerSearch(target, arr);
 
-        System.out.println(ht);
-
-        // remove the data as per key
-        ht.remove("orange");
-        System.out.println(ht);
-
-        // Check the hashmap contains the key
-        boolean containsApple = ht.containsKey("apple");
-        System.out.println("Contains apple ? "+containsApple);
+        System.out.println("Element is found at index : " + result);
     }
 }
