@@ -1,32 +1,34 @@
 class JavaDSA {
 
-    public int binarySearch(int target, int[] arr) {
-        int left = 0;
-        int right = arr.length - 1;
+    public void BubbleSort(int[] arr) {
+        boolean swaped = false;
 
-        while (left < right) {
-            int mid = (left + right) / 2;
-
-            if (arr[mid] == target)
-                return mid;
-
-            if (target < arr[mid]) {
-                right = mid - 1;
-            } else {
-                left = mid + 1;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swaped = true;
+                }
+            }
+            if (!swaped) {
+                break;
             }
         }
+    }
 
-        return -1;
+    public void display(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 
     public static void main(String[] args) {
-        int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        int target = 3;
+        int[] arr = { 1, 2, 3, 4, 5 };
 
-        JavaDSA js = new JavaDSA();
-        int result = js.binarySearch(target, arr);
-
-        System.out.println("Element is found at index : " + result);
+        JavaDSA jd = new JavaDSA();
+        jd.BubbleSort(arr);
+        jd.display(arr);
     }
 }
