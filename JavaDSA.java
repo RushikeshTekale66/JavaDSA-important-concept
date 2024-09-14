@@ -1,20 +1,16 @@
 class JavaDSA {
 
-    public void BubbleSort(int[] arr) {
-        boolean swaped = false;
-
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    swaped = true;
+    public void selectionSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
                 }
             }
-            if (!swaped) {
-                break;
-            }
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
         }
     }
 
@@ -25,10 +21,10 @@ class JavaDSA {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 1, 2, 3, 4, 5 };
+        int[] arr = { 1, 3, 4, 2, 5 };
 
         JavaDSA jd = new JavaDSA();
-        jd.BubbleSort(arr);
+        jd.selectionSort(arr);
         jd.display(arr);
     }
 }
